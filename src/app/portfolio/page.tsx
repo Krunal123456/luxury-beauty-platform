@@ -9,16 +9,24 @@ import { Dialog, DialogContent } from "@/components/ui/dialog";
 
 const categories = ["All", "Bridal", "Celebrity", "Editorial", "Fashion", "HD Makeup"];
 
-const images = Array.from({ length: 15 }).map((_, i) => ({
+const portfolioPhotos = [
+  { src: "/portfolio-1.png", category: "South Indian Bridal" },
+  { src: "/portfolio-2.png", category: "Punjabi Bridal" },
+  { src: "/portfolio-3.png", category: "Modern Reception" },
+  { src: "/portfolio-4.png", category: "Haldi Glow" },
+  { src: "/portfolio-5.png", category: "Classic Traditional" },
+  { src: "/portfolio-6.png", category: "Pastel Elegance" },
+  { src: "/bridal.png", category: "Bridal Consultation" },
+  { src: "/fashion.png", category: "Editorial Glamour" },
+  { src: "/celebrity.png", category: "Red Carpet Look" },
+  { src: "/hero-poster.png", category: "Signature Look" }
+];
+
+const images = portfolioPhotos.map((photo, i) => ({
   id: i,
-  src: [
-    "/bridal.png",
-    "/fashion.png",
-    "/celebrity.png",
-    "/journal.png"
-  ][i % 4],
-  category: categories[(i % 5) + 1],
-  height: i % 2 === 0 ? "h-[400px]" : "h-[600px]",
+  src: photo.src,
+  category: photo.category,
+  height: i % 3 === 0 ? "h-[600px]" : i % 2 === 0 ? "h-[400px]" : "h-[500px]",
 }));
 
 export default function PortfolioPage() {
