@@ -8,23 +8,33 @@ import { Input } from "@/components/ui/input";
 
 export function AIConcierge() {
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState<{role: 'user' | 'ai', text: string}[]>([
-    { role: 'ai', text: 'Hello. I am your personal beauty concierge. How can I assist you with your booking or style inspiration today?' }
+  const [messages, setMessages] = useState<{role: 'user' | 'assistant', text: string}[]>([
+    { role: 'assistant', text: "Hello! I'm your Studio Assistant. How can we help you today? Type your message below and we'll reply directly on WhatsApp!" }
   ]);
   const [input, setInput] = useState("");
 
   const handleSend = () => {
     if (!input.trim()) return;
+    
+    // Add user message to UI
     setMessages(prev => [...prev, { role: 'user', text: input }]);
+    const currentInput = input;
     setInput("");
     
-    // Fake AI Response
+    // Redirect to WhatsApp after a brief delay
     setTimeout(() => {
       setMessages(prev => [...prev, { 
-        role: 'ai', 
-        text: 'That sounds beautiful. I recommend exploring our Bridal Transformations gallery, and I can connect you with the artist via WhatsApp to discuss availability.' 
+        role: 'assistant', 
+        text: 'Redirecting you to WhatsApp...' 
       }]);
-    }, 1000);
+      
+      const phoneNumber = "918857075984"; // User's WhatsApp Number
+      const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(currentInput)}`;
+      window.open(whatsappUrl, '_blank');
+      
+      // Close after redirection
+      setTimeout(() => setIsOpen(false), 2000);
+    }, 600);
   };
 
   return (
@@ -79,7 +89,7 @@ export function AIConcierge() {
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && handleSend()}
-                placeholder="Ask about looks, pricing..." 
+                placeholder="Message us on WhatsApp..." 
                 className="flex-1 bg-background border-border rounded-sm"
               />
               <Button onClick={handleSend} size="icon" className="bg-primary rounded-sm">
