@@ -15,7 +15,7 @@ export function Hero() {
           loop
           muted
           playsInline
-          poster="/hero-poster.png"
+          poster="/hero-poster.jpg"
           className="w-full h-full object-cover"
         >
           <source src="https://cdn.pixabay.com/video/2021/08/10/84478-587265910_large.mp4" type="video/mp4" />
