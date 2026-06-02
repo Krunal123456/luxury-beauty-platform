@@ -9,17 +9,23 @@ import { Input } from "@/components/ui/input";
 export function AIConcierge() {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<{role: 'user' | 'assistant', text: string}[]>([
-    { role: 'assistant', text: "Hello! I'm your Studio Assistant. How can we help you today? Type your message below and we'll reply directly on WhatsApp!" }
+    { role: 'assistant', text: "Hello! I'm your Studio Assistant. How can we help you today? Type your message below or choose a question, and we'll reply directly on WhatsApp!" }
   ]);
   const [input, setInput] = useState("");
 
-  const handleSend = () => {
-    if (!input.trim()) return;
+  const quickQuestions = [
+    "What are your bridal makeup packages?",
+    "Are you available for destination weddings?",
+    "How can I book an appointment?"
+  ];
+
+  const handleSend = (textToSend?: string) => {
+    const finalMessage = textToSend || input;
+    if (!finalMessage.trim()) return;
     
     // Add user message to UI
-    setMessages(prev => [...prev, { role: 'user', text: input }]);
-    const currentInput = input;
-    setInput("");
+    setMessages(prev => [...prev, { role: 'user', text: finalMessage }]);
+    if (!textToSend) setInput("");
     
     // Redirect to WhatsApp after a brief delay
     setTimeout(() => {
@@ -29,7 +35,7 @@ export function AIConcierge() {
       }]);
       
       const phoneNumber = "918857075984"; // User's WhatsApp Number
-      const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(currentInput)}`;
+      const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(finalMessage)}`;
       window.open(whatsappUrl, '_blank');
       
       // Close after redirection
@@ -81,6 +87,21 @@ export function AIConcierge() {
                   </div>
                 </div>
               ))}
+              
+              {/* Quick Questions */}
+              {messages.length === 1 && (
+                <div className="flex flex-col gap-2 mt-4 items-end">
+                  {quickQuestions.map((q, i) => (
+                    <button
+                      key={i}
+                      onClick={() => handleSend(q)}
+                      className="text-xs bg-muted/50 hover:bg-muted text-foreground border border-border px-3 py-2 rounded-full text-left transition-colors max-w-[90%]"
+                    >
+                      {q}
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
 
             {/* Input Area */}
@@ -92,7 +113,7 @@ export function AIConcierge() {
                 placeholder="Message us on WhatsApp..." 
                 className="flex-1 bg-background border-border rounded-sm"
               />
-              <Button onClick={handleSend} size="icon" className="bg-primary rounded-sm">
+              <Button onClick={() => handleSend()} size="icon" className="bg-primary rounded-sm">
                 <Send className="w-4 h-4" />
               </Button>
             </div>
