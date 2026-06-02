@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
+import Link from "next/link";
+
 export function Hero() {
   return (
     <section className="relative h-screen w-full overflow-hidden flex items-center justify-center">
@@ -48,13 +50,17 @@ export function Hero() {
           transition={{ duration: 1, delay: 1.1 }}
           className="flex flex-col sm:flex-row gap-4 items-center mt-8"
         >
-          <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 h-14 px-8 rounded-none text-lg tracking-wider group transition-all duration-300">
-            Book Consultation
-            <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-          </Button>
-          <Button size="lg" variant="outline" className="border-border text-foreground hover:bg-white/5 hover:text-foreground h-14 px-8 rounded-none text-lg tracking-wider backdrop-blur-sm">
-            Explore Transformations
-          </Button>
+          <Link href="/book">
+            <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 h-14 px-8 rounded-none text-lg tracking-wider group transition-all duration-300">
+              Book Consultation
+              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </Button>
+          </Link>
+          <Link href="/stories">
+            <Button size="lg" variant="outline" className="border-border text-foreground hover:bg-white/5 hover:text-foreground h-14 px-8 rounded-none text-lg tracking-wider backdrop-blur-sm">
+              Explore Transformations
+            </Button>
+          </Link>
         </motion.div>
       </div>
       
