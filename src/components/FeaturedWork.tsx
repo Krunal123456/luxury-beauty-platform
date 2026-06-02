@@ -6,9 +6,9 @@ import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const works = [
-  { id: 1, title: "The Royal Wedding", category: "Bridal", img: "/bridal.png" },
-  { id: 2, title: "Vogue Summer '26", category: "Editorial", img: "/fashion.png" },
-  { id: 3, title: "Cannes Red Carpet", category: "Celebrity", img: "/celebrity.png" },
+  { id: 1, title: "The Royal Wedding", category: "Bridal", img: "/bridal.jpg" },
+  { id: 2, title: "Vogue Summer '26", category: "Editorial", img: "/fashion.jpg" },
+  { id: 3, title: "Cannes Red Carpet", category: "Celebrity", img: "/celebrity.jpg" },
 ];
 
 export function FeaturedWork() {

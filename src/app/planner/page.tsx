@@ -104,7 +104,7 @@ export default function PlannerPage() {
               <div className="grid md:grid-cols-2 gap-8">
                 <div className="relative aspect-[3/4] group overflow-hidden">
                   <img 
-                    src="/bridal.png" 
+                    src="/bridal.jpg" 
                     alt="Recommended Look" 
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   />

@@ -3,9 +3,9 @@ import { Footer } from "@/components/Footer";
 
 export default function JournalPage() {
   const articles = [
-    { title: "The 2026 Bridal Guide: Glass Skin Secrets", category: "Bridal Trends", date: "June 2026", img: "/bridal.png" },
-    { title: "Behind the Scenes: Vogue Editorial", category: "Fashion Insights", date: "May 2026", img: "/fashion.png" },
-    { title: "Mastering the Red Carpet Look", category: "Celebrity Looks", date: "April 2026", img: "/celebrity.png" },
+    { title: "The 2026 Bridal Guide: Glass Skin Secrets", category: "Bridal Trends", date: "June 2026", img: "/bridal.jpg" },
+    { title: "Behind the Scenes: Vogue Editorial", category: "Fashion Insights", date: "May 2026", img: "/fashion.jpg" },
+    { title: "Mastering the Red Carpet Look", category: "Celebrity Looks", date: "April 2026", img: "/celebrity.jpg" },
   ];
 
   return (
