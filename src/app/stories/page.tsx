@@ -55,7 +55,7 @@ export default function StoriesPage() {
               <span className="text-primary tracking-widest uppercase text-xs font-semibold">The Modern Muse</span>
               <h2 className="font-heading text-4xl md:text-5xl leading-tight">Glass Skin & Soft Glam</h2>
               <p className="text-muted-foreground leading-relaxed">
-                A contemporary look designed for a sundowner cocktail event. The focus was entirely on skin preparation to achieve the coveted 'glass skin' effect. Paired with fluffy brows, glossy lips, and a subtle champagne shimmer on the lids.
+                A contemporary look designed for a sundowner cocktail event. The focus was entirely on skin preparation to achieve the coveted &apos;glass skin&apos; effect. Paired with fluffy brows, glossy lips, and a subtle champagne shimmer on the lids.
               </p>
               <div className="grid grid-cols-2 gap-4 pt-4 border-t border-border/50">
                 <div>

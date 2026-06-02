@@ -56,13 +56,22 @@ export function Testimonials() {
               className="p-8 bg-card border border-border relative"
             >
               <Quote className="w-12 h-12 text-primary/20 absolute top-4 right-4" />
-              <p className="text-lg italic leading-relaxed mb-8 relative z-10">"{t.text}"</p>
+              <p className="text-lg italic leading-relaxed mb-8 relative z-10">&quot;{t.text}&quot;</p>
               <div>
                 <p className="font-heading text-xl">{t.name}</p>
                 <p className="text-primary uppercase tracking-widest text-xs mt-1">{t.role}</p>
               </div>
             </motion.div>
           ))}
+        </div>
+
+        <div className="mt-16 text-center">
+          <p className="text-muted-foreground tracking-widest uppercase text-sm mb-4">As Featured In</p>
+          <div className="flex justify-center gap-8 text-2xl font-heading text-primary/50">
+            <span>&quot;Vogue&quot;</span>
+            <span>&quot;Bazaar&quot;</span>
+            <span>&quot;Elle&quot;</span>
+          </div>
         </div>
       </div>
     </section>
