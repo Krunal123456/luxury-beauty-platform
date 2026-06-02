@@ -1,0 +1,16 @@
+{
+  "name": "Luxury Beauty Experience",
+  "short_name": "Luxe Beauty",
+  "description": "Premium Makeup Artist Digital Experience Platform",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1c1917",
+  "theme_color": "#cca677",
+  "icons": [
+    {
+      "src": "/hero-poster.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
