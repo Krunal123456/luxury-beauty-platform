@@ -26,8 +26,8 @@ export function Footer() {
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-4 gap-12 mb-16">
           <div className="md:col-span-1">
-            <Link href="/" className="font-heading text-3xl tracking-widest text-foreground font-semibold inline-block mb-6">
-              LUXE<span className="text-primary">.</span>
+            <Link href="/" className="font-[family-name:var(--font-signature)] text-4xl text-foreground inline-block mb-6">
+              MakeMyMakeup
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed max-w-xs">
               World-class luxury makeup experiences crafted with precision for brides, celebrities, and editorials globally.
@@ -69,9 +69,9 @@ export function Footer() {
           </div>
         </div>
         
-        <div className="border-t border-border/50 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-muted-foreground tracking-widest uppercase">
-          <p>© 2026 LUXE BEAUTY. ALL RIGHTS RESERVED.</p>
-          <div className="flex gap-6 mt-4 md:mt-0">
+        <div className="mt-24 pt-8 border-t border-border/50 text-center text-xs tracking-widest uppercase text-muted-foreground flex flex-col md:flex-row justify-between items-center gap-4">
+          <p>© 2026 MAKEMYMAKEUP. ALL RIGHTS RESERVED.</p>
+          <div className="flex gap-4">
             <Link href="#" className="hover:text-primary">Privacy Policy</Link>
             <Link href="#" className="hover:text-primary">Terms of Service</Link>
           </div>

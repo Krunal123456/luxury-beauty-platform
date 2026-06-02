@@ -40,8 +40,8 @@ export function Navbar() {
         }`}
       >
         <div className="container mx-auto px-4 flex items-center justify-between">
-          <Link href="/" onClick={() => setMobileMenuOpen(false)} className="font-heading text-2xl tracking-widest text-foreground font-semibold">
-            LUXE<span className="text-primary">.</span>
+          <Link href="/" onClick={() => setMobileMenuOpen(false)} className="font-[family-name:var(--font-signature)] text-3xl tracking-wide text-foreground">
+            MakeMyMakeup
           </Link>
 
           <nav className="hidden md:flex items-center gap-8 text-sm tracking-widest uppercase">
