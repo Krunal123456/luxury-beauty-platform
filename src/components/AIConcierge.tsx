@@ -51,7 +51,7 @@ export function AIConcierge() {
             <div className="p-4 border-b border-border bg-card flex justify-between items-center">
               <div className="flex items-center gap-2">
                 <Sparkles className="w-5 h-5 text-primary" />
-                <span className="font-heading tracking-widest uppercase text-sm">AI Concierge</span>
+                <span className="font-heading tracking-widest uppercase text-sm">Studio Assistant</span>
               </div>
               <button onClick={() => setIsOpen(false)} className="text-muted-foreground hover:text-foreground">
                 <X className="w-5 h-5" />

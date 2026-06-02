@@ -18,7 +18,7 @@ const outfit = Outfit({
 
 export const metadata: Metadata = {
   title: "Luxury Beauty Experience | Premium Makeup Artist",
-  description: "Category-defining digital experience combining luxury fashion magazine aesthetics, premium mobile application feel, and AI Beauty Assistant.",
+  description: "Category-defining digital experience combining luxury aesthetics and bespoke beauty services.",
   manifest: "/manifest.json",
 };
 

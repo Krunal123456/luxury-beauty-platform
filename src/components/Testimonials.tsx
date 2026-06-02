@@ -5,19 +5,22 @@ import { Quote } from "lucide-react";
 
 const testimonials = [
   {
-    name: "Priyanka Chopra",
-    role: "Celebrity Client",
-    text: "An absolute visionary. She understands exactly how to enhance natural beauty while bringing the drama needed for the red carpet.",
+    name: "Priya Desai",
+    role: "Bride",
+    text: "My wedding makeup was absolutely perfect. It lasted 16 hours through all the dancing and crying without feeling heavy!",
+    image: "/bridal.png"
   },
   {
-    name: "Sarah & James",
-    role: "Destination Wedding",
-    text: "My bridal makeup lasted 16 hours flawlessly through tears, dancing, and humidity. It was exactly what I dreamed of and more.",
+    name: "Neha Sharma",
+    role: "Bridesmaid",
+    text: "She made me feel so comfortable. The final look was exactly what I showed her from my Pinterest board. Highly recommend!",
+    image: "/fashion.png"
   },
   {
-    name: "Vogue India",
-    role: "Editorial Team",
-    text: "Consistently delivers immaculate skin and creative artistry. A true professional who elevates every photoshoot she touches.",
+    name: "Sneha Kapoor",
+    role: "Engagement",
+    text: "The best makeup artist I've ever booked! She kept my skin looking natural and flawless. I received so many compliments.",
+    image: "/celebrity.png"
   }
 ];
 
@@ -32,7 +35,7 @@ export function Testimonials() {
             viewport={{ once: true }}
             className="font-heading text-4xl md:text-5xl mb-4"
           >
-            Words of Admiration
+            Client Love
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
@@ -41,7 +44,7 @@ export function Testimonials() {
             transition={{ delay: 0.1 }}
             className="text-muted-foreground uppercase tracking-widest text-sm"
           >
-            Client Testimonials
+            Real Reviews from Real Clients
           </motion.p>
         </div>
 
@@ -53,25 +56,21 @@ export function Testimonials() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.2 }}
-              className="p-8 bg-card border border-border relative"
+              className="p-8 bg-card border border-border flex flex-col justify-between"
             >
-              <Quote className="w-12 h-12 text-primary/20 absolute top-4 right-4" />
-              <p className="text-lg italic leading-relaxed mb-8 relative z-10">&quot;{t.text}&quot;</p>
               <div>
-                <p className="font-heading text-xl">{t.name}</p>
-                <p className="text-primary uppercase tracking-widest text-xs mt-1">{t.role}</p>
+                <Quote className="w-10 h-10 text-primary/20 mb-4" />
+                <p className="text-base leading-relaxed mb-8 text-foreground/90">&quot;{t.text}&quot;</p>
+              </div>
+              <div className="flex items-center gap-4 border-t border-border/50 pt-6">
+                <img src={t.image} alt={t.name} className="w-12 h-12 rounded-full object-cover border border-border" />
+                <div>
+                  <p className="font-heading text-lg font-medium">{t.name}</p>
+                  <p className="text-primary uppercase tracking-widest text-[10px] mt-1">{t.role}</p>
+                </div>
               </div>
             </motion.div>
           ))}
-        </div>
-
-        <div className="mt-16 text-center">
-          <p className="text-muted-foreground tracking-widest uppercase text-sm mb-4">As Featured In</p>
-          <div className="flex justify-center gap-8 text-2xl font-heading text-primary/50">
-            <span>&quot;Vogue&quot;</span>
-            <span>&quot;Bazaar&quot;</span>
-            <span>&quot;Elle&quot;</span>
-          </div>
         </div>
       </div>
     </section>

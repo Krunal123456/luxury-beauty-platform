@@ -39,8 +39,8 @@ export default function PlannerPage() {
             >
               <div className="text-center mb-12">
                 <Sparkles className="w-8 h-8 text-primary mx-auto mb-4" />
-                <h1 className="font-heading text-4xl md:text-5xl font-medium mb-4">AI Bridal Planner</h1>
-                <p className="text-muted-foreground">Discover your perfect wedding day look curated by our AI.</p>
+                <h1 className="font-heading text-4xl md:text-5xl font-medium mb-4">Bridal Consultation Planner</h1>
+                <p className="text-muted-foreground">Discover your perfect wedding day look curated by our experts.</p>
               </div>
 
               <div className="bg-card border border-border p-8 rounded-sm shadow-2xl relative overflow-hidden">
