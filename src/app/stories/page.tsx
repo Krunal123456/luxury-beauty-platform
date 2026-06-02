@@ -41,7 +41,7 @@ export default function StoriesPage() {
             </div>
             <div className="flex-1 relative w-full aspect-[4/5] group overflow-hidden">
               <img 
-                src="/bridal.jpg" 
+                src="/bridal.png" 
                 alt="Transformation Story"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
@@ -70,7 +70,7 @@ export default function StoriesPage() {
             </div>
             <div className="flex-1 relative w-full aspect-[4/5] group overflow-hidden">
               <img 
-                src="/fashion.jpg" 
+                src="/fashion.png" 
                 alt="Transformation Story"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />

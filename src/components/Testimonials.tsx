@@ -8,19 +8,19 @@ const testimonials = [
     name: "Priya Desai",
     role: "Bride",
     text: "My wedding makeup was absolutely perfect. It lasted 16 hours through all the dancing and crying without feeling heavy!",
-    image: "/bridal.jpg"
+    image: "/bridal.png"
   },
   {
     name: "Neha Sharma",
     role: "Bridesmaid",
     text: "She made me feel so comfortable. The final look was exactly what I showed her from my Pinterest board. Highly recommend!",
-    image: "/fashion.jpg"
+    image: "/fashion.png"
   },
   {
     name: "Sneha Kapoor",
     role: "Engagement",
     text: "The best makeup artist I've ever booked! She kept my skin looking natural and flawless. I received so many compliments.",
-    image: "/celebrity.jpg"
+    image: "/celebrity.png"
   }
 ];
 

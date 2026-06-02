@@ -12,10 +12,10 @@ const categories = ["All", "Bridal", "Celebrity", "Editorial", "Fashion", "HD Ma
 const images = Array.from({ length: 15 }).map((_, i) => ({
   id: i,
   src: [
-    "/bridal.jpg",
-    "/fashion.jpg",
-    "/celebrity.jpg",
-    "/journal.jpg"
+    "/bridal.png",
+    "/fashion.png",
+    "/celebrity.png",
+    "/journal.png"
   ][i % 4],
   category: categories[(i % 5) + 1],
   height: i % 2 === 0 ? "h-[400px]" : "h-[600px]",
