@@ -7,6 +7,7 @@ import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { AIConcierge } from "@/components/AIConcierge";
 import { FloatingContact } from "@/components/FloatingContact";
 import { LanguageProvider } from "@/context/LanguageContext";
+import { ThemeProvider } from "@/components/ThemeProvider";
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
@@ -44,15 +45,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en" suppressHydrationWarning>
       <body className={`${playfair.variable} ${lato.variable} ${montserrat.variable} ${cinzel.variable} font-sans antialiased`}>
-        <LanguageProvider>
-          <SmoothScroll>
-            <CustomCursor />
-            <WhatsAppButton />
-            {children}
-          </SmoothScroll>
-        </LanguageProvider>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+          <LanguageProvider>
+            <SmoothScroll>
+              <CustomCursor />
+              <WhatsAppButton />
+              {children}
+            </SmoothScroll>
+          </LanguageProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
