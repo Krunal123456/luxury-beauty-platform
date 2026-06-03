@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { motion, useMotionValue, useSpring } from "framer-motion";
+import { motion, useMotionValue, useSpring, useMotionTemplate } from "framer-motion";
 
 export const MagicMirrorReveal = () => {
   const [isHovered, setIsHovered] = useState(false);
@@ -14,6 +14,16 @@ export const MagicMirrorReveal = () => {
   // Smooth springing for the spotlight
   const springX = useSpring(mouseX, { stiffness: 100, damping: 20 });
   const springY = useSpring(mouseY, { stiffness: 100, damping: 20 });
+  
+  // Smooth springing for the mask size (radius)
+  const maskSize = useSpring(0, { stiffness: 100, damping: 20 });
+
+  useEffect(() => {
+    maskSize.set(isHovered ? 150 : 0);
+  }, [isHovered, maskSize]);
+
+  // Reactive motion template that updates the DOM directly without re-renders
+  const clipPath = useMotionTemplate`circle(${maskSize}px at ${springX}px ${springY}px)`;
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!containerRef.current) return;
@@ -40,7 +50,14 @@ export const MagicMirrorReveal = () => {
           ref={containerRef}
           onMouseMove={handleMouseMove}
           onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
+          onMouseLeave={() => {
+            setIsHovered(false);
+            // Optionally reset to center
+            if (containerRef.current) {
+              mouseX.set(containerRef.current.clientWidth / 2);
+              mouseY.set(containerRef.current.clientHeight / 2);
+            }
+          }}
           className="relative w-full max-w-4xl mx-auto aspect-[4/5] md:aspect-[16/10] bg-muted overflow-hidden rounded-2xl cursor-none shadow-2xl"
         >
           {/* Base Image (Before) */}
@@ -54,15 +71,9 @@ export const MagicMirrorReveal = () => {
             className="absolute inset-0 bg-cover bg-center"
             style={{ 
               backgroundImage: `url('/portfolio-4.png')`,
-              // This creates the spotlight hole using the spring coordinates
-              clipPath: isHovered 
-                ? `circle(150px at ${springX.get()}px ${springY.get()}px)`
-                : `circle(0px at 50% 50%)`,
-              WebkitClipPath: isHovered 
-                ? `circle(150px at ${springX.get()}px ${springY.get()}px)`
-                : `circle(0px at 50% 50%)`,
+              clipPath: clipPath,
+              WebkitClipPath: clipPath,
             }}
-            transition={{ type: "tween", ease: "backOut", duration: 0.5 }}
           />
 
           {/* Custom Cursor Ring */}
