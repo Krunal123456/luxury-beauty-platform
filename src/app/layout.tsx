@@ -50,8 +50,6 @@ export default function RootLayout({
           <SmoothScroll>
             <CustomCursor />
             <WhatsAppButton />
-            <AIConcierge />
-            <FloatingContact />
             {children}
           </SmoothScroll>
         </LanguageProvider>
