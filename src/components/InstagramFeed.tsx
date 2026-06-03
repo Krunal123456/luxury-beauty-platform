@@ -28,10 +28,10 @@ export function InstagramFeed() {
             href="https://www.instagram.com/purva_makeover10/" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="hidden md:flex items-center gap-2 text-primary hover:text-primary/80 transition-colors tracking-widest uppercase text-xs font-semibold mt-6 md:mt-0"
+            className="flex items-center gap-3 bg-primary/10 hover:bg-primary text-primary hover:text-primary-foreground border border-primary/20 px-6 py-3 rounded-full transition-all duration-300 tracking-widest uppercase text-xs font-semibold mt-6 md:mt-0 shadow-sm"
           >
-            <Camera className="w-4 h-4" />
-            Follow on Instagram
+            <Camera className="w-5 h-5" />
+            Follow @purva_makeover10
           </a>
         </div>
 
