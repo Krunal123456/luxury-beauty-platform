@@ -16,20 +16,21 @@ export function InstagramFeed() {
   return (
     <section className="py-24 bg-card border-t border-border overflow-hidden">
       <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row justify-between items-center mb-12 gap-6">
-          <div className="text-center md:text-left">
-            <h2 className="font-heading text-3xl md:text-4xl mb-2 text-foreground flex items-center justify-center md:justify-start gap-3">
-              <Camera className="w-8 h-8 text-primary" />
-              <span>@makemymakeup_official</span>
+        <div className="flex flex-col md:flex-row justify-between items-end mb-12">
+          <div>
+            <span className="text-primary tracking-[0.3em] uppercase text-xs font-semibold">Social</span>
+            <h2 className="font-heading text-4xl md:text-5xl mt-4 mb-4 text-foreground">
+              Follow the <span className="text-primary italic">Journey</span>
             </h2>
-            <p className="text-muted-foreground">Follow us for daily bridal inspiration & transformations</p>
+            <p className="text-muted-foreground">@purva_makeover10 on Instagram</p>
           </div>
           <a 
-            href="#" 
-            target="_blank"
+            href="https://www.instagram.com/purva_makeover10/" 
+            target="_blank" 
             rel="noopener noreferrer"
-            className="border border-primary text-primary px-6 py-3 text-sm font-semibold tracking-widest uppercase hover:bg-primary hover:text-primary-foreground transition-all duration-300 whitespace-nowrap"
+            className="hidden md:flex items-center gap-2 text-primary hover:text-primary/80 transition-colors tracking-widest uppercase text-xs font-semibold mt-6 md:mt-0"
           >
+            <Camera className="w-4 h-4" />
             Follow on Instagram
           </a>
         </div>

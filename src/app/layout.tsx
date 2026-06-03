@@ -36,14 +36,14 @@ const cinzel = Cinzel({
 });
 
 export const metadata: Metadata = {
-  title: "Make My Makeup | Best Makeup Artist in Wardha",
+  title: "Purva Makeover | Best Makeup Artist in Wardha",
   description: "Ranked #1 luxury bridal and celebrity makeup artist in Wardha. Specializing in HD, Airbrush, and flawless beauty transformations. Book your exclusive consultation today.",
   keywords: ["wardha makeup beauty", "best makeup artist in wardha", "bridal makeup wardha", "luxury salon wardha", "makeup studio wardha", "top makeup artist wardha"],
   openGraph: {
-    title: "Make My Makeup | Best Makeup Artist in Wardha",
+    title: "Purva Makeover | Best Makeup Artist in Wardha",
     description: "Ranked #1 luxury bridal and celebrity makeup artist in Wardha. Specializing in HD, Airbrush, and flawless beauty transformations.",
     url: "https://luxury-beauty-platform.vercel.app", // User should update with their real domain
-    siteName: "Make My Makeup",
+    siteName: "Purva Makeover",
     images: [
       {
         url: "https://luxury-beauty-platform.vercel.app/bridal.png",
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Make My Makeup | Best Makeup Artist in Wardha",
+    title: "Purva Makeover | Best Makeup Artist in Wardha",
     description: "Ranked #1 luxury bridal and celebrity makeup artist in Wardha.",
     images: ["https://luxury-beauty-platform.vercel.app/bridal.png"],
   },
@@ -66,7 +66,7 @@ export const metadata: Metadata = {
 const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "BeautySalon",
-  "name": "Make My Makeup",
+  "name": "Purva Makeover",
   "image": "https://luxury-beauty-platform.vercel.app/bridal.png",
   "description": "Ranked #1 luxury bridal and celebrity makeup artist in Wardha. Specializing in HD, Airbrush, and flawless beauty transformations.",
   "address": {

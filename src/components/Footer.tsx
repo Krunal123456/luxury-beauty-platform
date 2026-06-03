@@ -27,7 +27,7 @@ export function Footer() {
         <div className="grid md:grid-cols-4 gap-12 mb-16">
           <div className="md:col-span-1">
             <Link href="/" className="font-[family-name:var(--font-signature)] text-4xl text-foreground inline-block mb-6">
-              MakeMyMakeup
+              Purva Makeover
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed max-w-xs">
               World-class luxury makeup experiences crafted with precision for brides, celebrities, and editorials globally.
@@ -62,7 +62,7 @@ export function Footer() {
               <li className="flex items-center gap-3"><Phone className="w-4 h-4 text-primary" /> +91 88570 75984</li>
             </ul>
             <div className="flex gap-4 mt-8">
-              <a href="#" className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:border-primary hover:text-primary transition-colors">
+              <a href="https://www.instagram.com/purva_makeover10/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary transition-all duration-300">
                 <Instagram className="w-4 h-4" />
               </a>
             </div>
@@ -70,7 +70,7 @@ export function Footer() {
         </div>
         
         <div className="mt-24 pt-8 border-t border-border/50 text-center text-xs tracking-widest uppercase text-muted-foreground flex flex-col md:flex-row justify-between items-center gap-4">
-          <p>© 2026 MAKEMYMAKEUP. ALL RIGHTS RESERVED.</p>
+          <p>© 2026 PURVA MAKEOVER. ALL RIGHTS RESERVED.</p>
           <div className="flex gap-4">
             <Link href="#" className="hover:text-primary">Privacy Policy</Link>
             <Link href="#" className="hover:text-primary">Terms of Service</Link>

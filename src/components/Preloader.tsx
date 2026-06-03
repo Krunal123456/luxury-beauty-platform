@@ -31,7 +31,7 @@ export const Preloader = () => {
             className="flex flex-col items-center"
           >
             <h1 className="font-heading text-4xl md:text-6xl text-foreground mb-4 tracking-tight">
-              MakeMyMakeup
+              Purva Makeover
             </h1>
             <div className="w-48 h-[1px] bg-border relative overflow-hidden">
               <motion.div
