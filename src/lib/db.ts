@@ -50,6 +50,7 @@ const DEFAULT_DATA: DatabaseSchema = {
     { id: "p3", url: "/purva-portfolio-3.jpg", title: "Flawless Base", category: "Bridal", createdAt: new Date().toISOString() },
     { id: "p4", url: "/purva-portfolio-4.jpg", title: "South Indian Look", category: "Bridal", createdAt: new Date().toISOString() },
     { id: "p5", url: "/purva-portfolio-5.jpg", title: "Reception Ready", category: "Party", createdAt: new Date().toISOString() },
+    { id: "p6", url: "/purva-portfolio-6.jpg", title: "Royal Red Lehenga", category: "Bridal", createdAt: new Date().toISOString() },
     { id: "1", url: "/portfolio-1.png", title: "South Indian Bridal", category: "Bridal", createdAt: new Date(Date.now() - 100000).toISOString() },
     { id: "2", url: "/portfolio-2.png", title: "Punjabi Bridal", category: "Bridal", createdAt: new Date(Date.now() - 200000).toISOString() },
     { id: "3", url: "/portfolio-3.png", title: "Reception Glam", category: "Party", createdAt: new Date(Date.now() - 300000).toISOString() },
