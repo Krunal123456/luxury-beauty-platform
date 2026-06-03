@@ -2,8 +2,8 @@ import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
 import { PressBanner } from "@/components/PressBanner";
 import { AnimatedCounters } from "@/components/AnimatedCounters";
+import { MagicMirrorReveal } from "@/components/MagicMirrorReveal";
 import { Services } from "@/components/Services";
-import { BeforeAfterSlider } from "@/components/BeforeAfterSlider";
 import { Packages } from "@/components/Packages";
 import { LeadMagnet } from "@/components/LeadMagnet";
 import { LookFinderQuiz } from "@/components/LookFinderQuiz";
@@ -19,13 +19,13 @@ import { Footer } from "@/components/Footer";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col relative overflow-hidden">
+    <main className="flex min-h-screen flex-col relative overflow-hidden bg-background">
       <Navbar />
       <Hero />
       <PressBanner />
       <AnimatedCounters />
+      <MagicMirrorReveal />
       <Services />
-      <BeforeAfterSlider />
       <Packages />
       <LeadMagnet />
       <LookFinderQuiz />

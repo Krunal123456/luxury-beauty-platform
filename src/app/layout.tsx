@@ -8,6 +8,7 @@ import { LanguageProvider } from "@/context/LanguageContext";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { Preloader } from "@/components/Preloader";
 import { PageTransition } from "@/components/PageTransition";
+import { AIConsultantChat } from "@/components/AIConsultantChat";
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
@@ -53,6 +54,7 @@ export default function RootLayout({
             <SmoothScroll>
               <CustomCursor />
               <WhatsAppButton />
+              <AIConsultantChat />
               <PageTransition>
                 {children}
               </PageTransition>
