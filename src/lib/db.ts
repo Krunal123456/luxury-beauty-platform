@@ -1,8 +1,10 @@
 import fs from 'fs/promises';
 import path from 'path';
 
-// Define the path to our mock database file
-const DB_PATH = path.join(process.cwd(), '.data', 'db.json');
+// Define the path to our mock database file. On Vercel, the file system is read-only except for /tmp
+const DB_PATH = process.env.VERCEL 
+  ? path.join('/tmp', 'db.json')
+  : path.join(process.cwd(), '.data', 'db.json');
 
 // Define our data structures
 export interface Booking {
