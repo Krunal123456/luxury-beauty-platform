@@ -5,7 +5,7 @@ import { Phone, MessageCircle, MapPin, Clock } from "lucide-react";
 
 export function Contact() {
   const phoneNumber = "918857075984";
-  const whatsappUrl = `https://wa.me/${phoneNumber}?text=Hi%20Ravina%20Makeover!%20I%20would%20like%20to%20book%20an%20appointment.`;
+  const whatsappUrl = `https://wa.me/${phoneNumber}?text=Hi%20MakeMyMakeup!%20I%20would%20like%20to%20book%20an%20appointment.`;
 
   return (
     <section className="py-24 bg-background border-t border-border relative overflow-hidden" id="contact">

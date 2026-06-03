@@ -20,12 +20,12 @@ export function InstagramFeed() {
           <div className="text-center md:text-left">
             <h2 className="font-heading text-3xl md:text-4xl mb-2 text-foreground flex items-center justify-center md:justify-start gap-3">
               <Camera className="w-8 h-8 text-primary" />
-              <span>@makeover__by__ravina</span>
+              <span>@makemymakeup_official</span>
             </h2>
             <p className="text-muted-foreground">Follow us for daily bridal inspiration & transformations</p>
           </div>
           <a 
-            href="https://www.instagram.com/makeover__by__ravina?igsh=MWNjMjcybmlzNnByaw==" 
+            href="#" 
             target="_blank"
             rel="noopener noreferrer"
             className="border border-primary text-primary px-6 py-3 text-sm font-semibold tracking-widest uppercase hover:bg-primary hover:text-primary-foreground transition-all duration-300 whitespace-nowrap"
@@ -37,7 +37,7 @@ export function InstagramFeed() {
         <div className="grid grid-cols-2 md:grid-cols-3 gap-1 md:gap-4 max-w-6xl mx-auto">
           {posts.map((post, i) => (
             <motion.a
-              href="https://www.instagram.com/makeover__by__ravina?igsh=MWNjMjcybmlzNnByaw==" 
+              href="#" 
               target="_blank"
               rel="noopener noreferrer"
               key={post.id}
