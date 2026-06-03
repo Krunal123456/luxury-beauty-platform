@@ -58,7 +58,7 @@ export function Footer() {
             <h4 className="font-heading text-lg mb-6">Contact</h4>
             <ul className="space-y-4 text-sm text-muted-foreground">
               <li className="flex items-center gap-3"><MapPin className="w-4 h-4 text-primary" /> Arvi Naka, Wardha</li>
-              <li className="flex items-center gap-3"><Mail className="w-4 h-4 text-primary" /> krunalkishortote@gmail.com</li>
+              <li className="flex items-center gap-3"><Mail className="w-4 h-4 text-primary" /> purvadhongadr.1234@gmail.com</li>
               <li className="flex items-center gap-3"><Phone className="w-4 h-4 text-primary" /> +91 88570 75984</li>
             </ul>
             <div className="flex gap-4 mt-8">

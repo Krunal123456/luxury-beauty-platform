@@ -45,12 +45,15 @@ interface DatabaseSchema {
 const DEFAULT_DATA: DatabaseSchema = {
   bookings: [],
   portfolio: [
-    { id: "1", url: "/portfolio-1.png", title: "South Indian Bridal", category: "Bridal", createdAt: new Date().toISOString() },
-    { id: "2", url: "/portfolio-2.png", title: "Punjabi Bridal", category: "Bridal", createdAt: new Date().toISOString() },
-    { id: "3", url: "/portfolio-3.png", title: "Reception Glam", category: "Party", createdAt: new Date().toISOString() },
-    { id: "4", url: "/portfolio-4.png", title: "Haldi Glow", category: "Pre-Wedding", createdAt: new Date().toISOString() },
-    { id: "5", url: "/portfolio-5.png", title: "Classic Red", category: "Bridal", createdAt: new Date().toISOString() },
-    { id: "6", url: "/portfolio-6.png", title: "Soft Pastel", category: "Bridal", createdAt: new Date().toISOString() }
+    { id: "p1", url: "/purva-portfolio-1.jpg", title: "Signature Bridal Glam", category: "Bridal", createdAt: new Date().toISOString() },
+    { id: "p2", url: "/purva-portfolio-2.jpg", title: "Soft Glam Makeup", category: "Party", createdAt: new Date().toISOString() },
+    { id: "p3", url: "/purva-portfolio-3.jpg", title: "Flawless Base", category: "Bridal", createdAt: new Date().toISOString() },
+    { id: "p4", url: "/purva-portfolio-4.jpg", title: "South Indian Look", category: "Bridal", createdAt: new Date().toISOString() },
+    { id: "p5", url: "/purva-portfolio-5.jpg", title: "Reception Ready", category: "Party", createdAt: new Date().toISOString() },
+    { id: "1", url: "/portfolio-1.png", title: "South Indian Bridal", category: "Bridal", createdAt: new Date(Date.now() - 100000).toISOString() },
+    { id: "2", url: "/portfolio-2.png", title: "Punjabi Bridal", category: "Bridal", createdAt: new Date(Date.now() - 200000).toISOString() },
+    { id: "3", url: "/portfolio-3.png", title: "Reception Glam", category: "Party", createdAt: new Date(Date.now() - 300000).toISOString() },
+    { id: "4", url: "/portfolio-4.png", title: "Haldi Glow", category: "Pre-Wedding", createdAt: new Date(Date.now() - 400000).toISOString() }
   ],
   reviews: [
     { id: "r1", name: "Priya Sharma", rating: 5, text: "Absolutely loved my bridal makeup! It stayed flawless for 14 hours despite the heavy lighting and crying. Highly recommend her for your big day.", status: "approved", createdAt: new Date(Date.now() - 86400000 * 5).toISOString() },
