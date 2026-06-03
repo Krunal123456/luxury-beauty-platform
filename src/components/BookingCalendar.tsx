@@ -53,7 +53,7 @@ export function BookingCalendar() {
         setIsSuccess(true);
         // Still open WhatsApp as an immediate notification
         const displayDate = format(selectedDate, "MMM do, yyyy");
-        const message = `Hi! I just booked an appointment online.%0A%0A*Name:* ${name}%0A*Service:* ${selectedService}%0A*Date:* ${displayDate}%0A*Time:* ${selectedTime}%0A%0APlease let me know how I can pay the deposit to confirm.`;
+        const message = `Hi! I just booked an appointment online.%0A%0A*Name:* ${name}%0A*WhatsApp No:* ${phone}%0A*Service:* ${selectedService}%0A*Date:* ${displayDate}%0A*Time:* ${selectedTime}%0A%0APlease let me know how I can pay the deposit to confirm.`;
         window.open(`https://wa.me/918857075984?text=${message}`, '_blank');
       } else {
         alert("Failed to save booking. Please try again.");
