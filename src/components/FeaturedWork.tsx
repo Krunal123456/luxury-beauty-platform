@@ -91,32 +91,40 @@ export function FeaturedWork() {
             Loading Portfolio...
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1 md:gap-4 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-8 max-w-6xl mx-auto perspective-1000">
             {filteredItems.map((item, index) => (
               <motion.div
                 key={item.id}
                 layoutId={`portfolio-${item.id}`}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
-                className="group relative aspect-[4/5] overflow-hidden cursor-pointer bg-background"
+                initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1, type: "spring", stiffness: 100 }}
+                whileHover={{ scale: 1.05, rotateX: 5, rotateY: -5, z: 50 }}
+                className="group relative aspect-[4/5] overflow-hidden cursor-pointer bg-background rounded-2xl shadow-xl hover:shadow-2xl hover:shadow-primary/20 transition-shadow duration-500"
                 onClick={() => setSelectedImage(item)}
+                style={{ transformStyle: "preserve-3d" }}
               >
                 {/* Image */}
-                <div 
-                  className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+                <motion.div 
+                  className="absolute inset-0 bg-cover bg-center transition-transform duration-700"
                   style={{ backgroundImage: `url(${item.url})` }}
+                  whileHover={{ scale: 1.15 }}
                 />
                 
                 {/* Hover Overlay */}
-                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-8">
-                  <div className="translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                    <span className="text-primary text-xs tracking-widest uppercase font-semibold mb-2 block">
-                      {item.category}
-                    </span>
-                    <h3 className="text-white font-heading text-2xl">
-                      {item.title}
-                    </h3>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8" style={{ transform: "translateZ(30px)" }}>
+                  <div className="translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 flex items-end justify-between">
+                    <div>
+                      <span className="text-primary text-[10px] tracking-widest uppercase font-bold mb-2 block drop-shadow-md">
+                        {item.category}
+                      </span>
+                      <h3 className="text-white font-heading text-2xl drop-shadow-lg">
+                        {item.title}
+                      </h3>
+                    </div>
+                    <div className="w-10 h-10 rounded-full bg-primary/20 backdrop-blur-md flex items-center justify-center border border-primary/30">
+                      <Eye className="w-4 h-4 text-primary" />
+                    </div>
                   </div>
                 </div>
               </motion.div>

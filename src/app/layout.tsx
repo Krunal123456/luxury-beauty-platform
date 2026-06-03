@@ -4,10 +4,10 @@ import "./globals.css";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { CustomCursor } from "@/components/CustomCursor";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
-import { AIConcierge } from "@/components/AIConcierge";
-import { FloatingContact } from "@/components/FloatingContact";
 import { LanguageProvider } from "@/context/LanguageContext";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { Preloader } from "@/components/Preloader";
+import { PageTransition } from "@/components/PageTransition";
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
@@ -49,10 +49,13 @@ export default function RootLayout({
       <body className={`${playfair.variable} ${lato.variable} ${montserrat.variable} ${cinzel.variable} font-sans antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <LanguageProvider>
+            <Preloader />
             <SmoothScroll>
               <CustomCursor />
               <WhatsAppButton />
-              {children}
+              <PageTransition>
+                {children}
+              </PageTransition>
             </SmoothScroll>
           </LanguageProvider>
         </ThemeProvider>

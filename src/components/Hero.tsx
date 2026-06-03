@@ -2,9 +2,26 @@
 
 import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
+import { MagicButton } from "@/components/ui/MagicButton";
 
 export function Hero() {
   const { t } = useLanguage();
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.3,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } },
+  };
 
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden" id="hero">
@@ -24,36 +41,38 @@ export function Hero() {
       {/* Content */}
       <div className="container relative z-10 mx-auto px-4 text-center mt-20">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.2 }}
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
         >
-          <p className="text-primary tracking-[0.3em] uppercase text-xs md:text-sm font-semibold mb-6">
+          <motion.p variants={itemVariants} className="text-primary tracking-[0.3em] uppercase text-xs md:text-sm font-semibold mb-6">
             {t.heroTagline}
-          </p>
-          <h1 className="font-heading text-5xl md:text-7xl lg:text-8xl mb-6 text-foreground drop-shadow-2xl">
+          </motion.p>
+          <motion.h1 variants={itemVariants} className="font-heading text-5xl md:text-7xl lg:text-8xl mb-6 text-foreground drop-shadow-2xl">
             {t.heroTitlePrefix} <span className="italic text-primary">{t.heroTitleHighlight}</span>
-          </h1>
-          <p className="text-muted-foreground max-w-2xl mx-auto text-lg md:text-xl leading-relaxed mb-10">
+          </motion.h1>
+          <motion.p variants={itemVariants} className="text-muted-foreground max-w-2xl mx-auto text-lg md:text-xl leading-relaxed mb-10">
             {t.heroDescription}
-          </p>
+          </motion.p>
           
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+          <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center justify-center gap-6">
             <a 
               href="https://wa.me/918857075984" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="bg-primary text-primary-foreground px-8 py-4 text-sm font-semibold tracking-[0.2em] uppercase hover:bg-primary/90 transition-colors w-full sm:w-auto shadow-[0_0_30px_rgba(212,175,55,0.3)] hover:shadow-[0_0_40px_rgba(212,175,55,0.5)]"
+              className="w-full sm:w-auto"
             >
-              {t.heroBtnPrimary}
+              <MagicButton>
+                {t.heroBtnPrimary}
+              </MagicButton>
             </a>
             <a 
               href="/portfolio" 
-              className="border border-border text-foreground px-8 py-4 text-sm font-semibold tracking-[0.2em] uppercase hover:border-primary hover:text-primary transition-all duration-300 w-full sm:w-auto bg-background/50 backdrop-blur-sm"
+              className="border border-border text-foreground px-8 py-[15px] text-xs font-semibold tracking-widest uppercase hover:border-primary hover:text-primary transition-all duration-300 w-full sm:w-auto bg-background/50 backdrop-blur-sm h-14 flex items-center justify-center"
             >
               {t.heroBtnSecondary}
             </a>
-          </div>
+          </motion.div>
         </motion.div>
       </div>
 
