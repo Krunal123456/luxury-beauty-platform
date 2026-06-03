@@ -2,6 +2,9 @@ import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
 import { AnimatedCounters } from "@/components/AnimatedCounters";
 import { Services } from "@/components/Services";
+import { BeforeAfterSlider } from "@/components/BeforeAfterSlider";
+import { LookFinderQuiz } from "@/components/LookFinderQuiz";
+import { CinematicGallery } from "@/components/CinematicGallery";
 import { Packages } from "@/components/Packages";
 import { FeaturedWork } from "@/components/FeaturedWork";
 import { Testimonials } from "@/components/Testimonials";
@@ -16,8 +19,11 @@ export default function Home() {
       <Hero />
       <AnimatedCounters />
       <Services />
+      <BeforeAfterSlider />
       <Packages />
+      <LookFinderQuiz />
       <FeaturedWork />
+      <CinematicGallery />
       <Testimonials />
       <FAQ />
       <Contact />
