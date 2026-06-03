@@ -24,9 +24,19 @@ export interface PortfolioImage {
   createdAt: string;
 }
 
+export interface Review {
+  id: string;
+  name: string;
+  rating: number; // 1-5
+  text: string;
+  status: 'pending' | 'approved';
+  createdAt: string;
+}
+
 interface DatabaseSchema {
   bookings: Booking[];
   portfolio: PortfolioImage[];
+  reviews: Review[];
 }
 
 // Initial default data if the file doesn't exist
@@ -39,6 +49,11 @@ const DEFAULT_DATA: DatabaseSchema = {
     { id: "4", url: "/portfolio-4.png", title: "Haldi Glow", category: "Pre-Wedding", createdAt: new Date().toISOString() },
     { id: "5", url: "/portfolio-5.png", title: "Classic Red", category: "Bridal", createdAt: new Date().toISOString() },
     { id: "6", url: "/portfolio-6.png", title: "Soft Pastel", category: "Bridal", createdAt: new Date().toISOString() }
+  ],
+  reviews: [
+    { id: "r1", name: "Priya Sharma", rating: 5, text: "Absolutely loved my bridal makeup! It stayed flawless for 14 hours despite the heavy lighting and crying. Highly recommend her for your big day.", status: "approved", createdAt: new Date(Date.now() - 86400000 * 5).toISOString() },
+    { id: "r2", name: "Ananya Desai", rating: 5, text: "She gave me the exact natural, glowing look I asked for. I felt like myself, just enhanced. The premium products she uses are totally worth it.", status: "approved", createdAt: new Date(Date.now() - 86400000 * 12).toISOString() },
+    { id: "r3", name: "Riya Kapoor", rating: 4, text: "Great experience overall. The pre-wedding trial was extremely helpful in deciding the final look. Would book again for party glam.", status: "approved", createdAt: new Date(Date.now() - 86400000 * 20).toISOString() },
   ]
 };
 
@@ -46,6 +61,13 @@ const DEFAULT_DATA: DatabaseSchema = {
 async function ensureDb() {
   try {
     await fs.access(DB_PATH);
+    // Migration check: ensure 'reviews' exists in old db files
+    const data = await fs.readFile(DB_PATH, 'utf-8');
+    const parsed = JSON.parse(data);
+    if (!parsed.reviews) {
+      parsed.reviews = DEFAULT_DATA.reviews;
+      await fs.writeFile(DB_PATH, JSON.stringify(parsed, null, 2));
+    }
   } catch {
     const dir = path.dirname(DB_PATH);
     await fs.mkdir(dir, { recursive: true });
@@ -106,6 +128,44 @@ export const db = {
   async deletePortfolioImage(id: string): Promise<void> {
     const data = await this.read();
     data.portfolio = data.portfolio.filter(img => img.id !== id);
+    await this.write(data);
+  },
+
+  // Reviews Methods
+  async getReviews(status?: 'pending' | 'approved'): Promise<Review[]> {
+    const data = await this.read();
+    let reviews = data.reviews;
+    if (status) {
+      reviews = reviews.filter(r => r.status === status);
+    }
+    return reviews.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+  },
+
+  async addReview(review: Omit<Review, 'id' | 'createdAt' | 'status'>): Promise<Review> {
+    const data = await this.read();
+    const newReview: Review = {
+      ...review,
+      id: Math.random().toString(36).substring(2, 9),
+      status: 'pending', // Requires admin approval
+      createdAt: new Date().toISOString()
+    };
+    data.reviews.push(newReview);
+    await this.write(data);
+    return newReview;
+  },
+
+  async updateReviewStatus(id: string, status: 'pending' | 'approved'): Promise<void> {
+    const data = await this.read();
+    const review = data.reviews.find(r => r.id === id);
+    if (review) {
+      review.status = status;
+      await this.write(data);
+    }
+  },
+
+  async deleteReview(id: string): Promise<void> {
+    const data = await this.read();
+    data.reviews = data.reviews.filter(r => r.id !== id);
     await this.write(data);
   }
 };

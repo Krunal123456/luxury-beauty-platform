@@ -2,13 +2,14 @@
 
 import { useState, useEffect } from "react";
 import { format } from "date-fns";
-import type { Booking, PortfolioImage } from "@/lib/db";
-import { LayoutDashboard, Image as ImageIcon, CalendarCheck, LogOut, Plus } from "lucide-react";
+import type { Booking, PortfolioImage, Review } from "@/lib/db";
+import { LayoutDashboard, Image as ImageIcon, CalendarCheck, LogOut, Plus, Star, CheckCircle, Trash2, MessageSquareQuote } from "lucide-react";
 
 export default function AdminDashboard() {
-  const [activeTab, setActiveTab] = useState<"bookings" | "portfolio">("bookings");
+  const [activeTab, setActiveTab] = useState<"bookings" | "portfolio" | "reviews">("bookings");
   const [bookings, setBookings] = useState<Booking[]>([]);
   const [portfolio, setPortfolio] = useState<PortfolioImage[]>([]);
+  const [reviews, setReviews] = useState<Review[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
   // Form states
@@ -23,15 +24,18 @@ export default function AdminDashboard() {
   const fetchData = async () => {
     setIsLoading(true);
     try {
-      const [bookingsRes, portfolioRes] = await Promise.all([
+      const [bookingsRes, portfolioRes, reviewsRes] = await Promise.all([
         fetch('/api/book'),
-        fetch('/api/portfolio')
+        fetch('/api/portfolio'),
+        fetch('/api/reviews')
       ]);
       const bookingsData = await bookingsRes.json();
       const portfolioData = await portfolioRes.json();
+      const reviewsData = await reviewsRes.json();
       
       setBookings(bookingsData.bookings || []);
       setPortfolio(portfolioData.portfolio || []);
+      setReviews(reviewsData.reviews || []);
     } catch (error) {
       console.error("Failed to load admin data", error);
     } finally {
@@ -61,6 +65,26 @@ export default function AdminDashboard() {
     }
   };
 
+  const handleReviewAction = async (id: string, action: 'approve' | 'delete') => {
+    try {
+      const body = action === 'approve' 
+        ? { id, status: 'approved' }
+        : { id, action: 'delete' };
+
+      const res = await fetch('/api/reviews', {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body)
+      });
+      
+      if (res.ok) {
+        fetchData();
+      }
+    } catch (error) {
+      console.error("Failed to update review", error);
+    }
+  };
+
   if (isLoading) {
     return <div className="min-h-screen flex items-center justify-center bg-background text-foreground tracking-widest uppercase">Loading Admin Portal...</div>;
   }
@@ -82,6 +106,19 @@ export default function AdminDashboard() {
             <CalendarCheck className="w-5 h-5" /> Booking Leads
           </button>
           <button 
+            onClick={() => setActiveTab("reviews")}
+            className={`flex items-center justify-between px-4 py-3 rounded-md transition-colors ${activeTab === "reviews" ? "bg-primary/10 text-primary font-medium border border-primary/20" : "text-muted-foreground hover:bg-muted"}`}
+          >
+            <div className="flex items-center gap-3">
+              <MessageSquareQuote className="w-5 h-5" /> Reviews
+            </div>
+            {reviews.filter(r => r.status === 'pending').length > 0 && (
+              <span className="bg-primary text-primary-foreground text-[10px] px-2 py-0.5 rounded-full font-bold">
+                {reviews.filter(r => r.status === 'pending').length}
+              </span>
+            )}
+          </button>
+          <button 
             onClick={() => setActiveTab("portfolio")}
             className={`flex items-center gap-3 px-4 py-3 rounded-md transition-colors ${activeTab === "portfolio" ? "bg-primary/10 text-primary font-medium border border-primary/20" : "text-muted-foreground hover:bg-muted"}`}
           >
@@ -101,7 +138,9 @@ export default function AdminDashboard() {
         <div className="mb-12">
           <span className="text-primary tracking-[0.2em] uppercase text-xs font-semibold">Dashboard View</span>
           <h1 className="font-heading text-4xl text-foreground mt-2">
-            {activeTab === "bookings" ? "Client Inquiries" : "Content Management"}
+            {activeTab === "bookings" && "Client Inquiries"}
+            {activeTab === "portfolio" && "Content Management"}
+            {activeTab === "reviews" && "Review Moderation"}
           </h1>
         </div>
 
@@ -148,6 +187,56 @@ export default function AdminDashboard() {
                   )}
                 </tbody>
               </table>
+            </div>
+          </div>
+        )}
+
+        {activeTab === "reviews" && (
+          <div className="space-y-6">
+            <div className="grid grid-cols-1 gap-6">
+              {reviews.length === 0 && (
+                <div className="text-center py-12 text-muted-foreground uppercase tracking-widest text-sm border border-dashed border-border rounded-xl">
+                  No reviews submitted yet.
+                </div>
+              )}
+              {reviews.map(review => (
+                <div key={review.id} className={`p-6 border rounded-xl flex flex-col md:flex-row gap-6 justify-between items-start md:items-center ${review.status === 'pending' ? 'bg-primary/5 border-primary/30' : 'bg-card border-border'}`}>
+                  <div className="flex-1 space-y-3">
+                    <div className="flex items-center gap-3">
+                      <h3 className="font-heading text-xl text-foreground">{review.name}</h3>
+                      {review.status === 'pending' ? (
+                        <span className="text-[10px] bg-yellow-500/20 text-yellow-500 uppercase tracking-widest px-2 py-1 font-bold rounded">Needs Approval</span>
+                      ) : (
+                        <span className="text-[10px] bg-green-500/20 text-green-500 uppercase tracking-widest px-2 py-1 font-bold rounded">Live on Site</span>
+                      )}
+                    </div>
+                    <div className="flex gap-1 text-primary">
+                      {Array.from({ length: 5 }).map((_, i) => (
+                        <Star key={i} className={`w-4 h-4 ${i < review.rating ? 'fill-primary' : 'opacity-30'}`} />
+                      ))}
+                    </div>
+                    <p className="text-muted-foreground italic text-sm border-l-2 border-primary/30 pl-4">{review.text}</p>
+                    <div className="text-xs text-muted-foreground/60">{format(new Date(review.createdAt), "MMM d, yyyy")}</div>
+                  </div>
+                  
+                  <div className="flex gap-3 shrink-0">
+                    {review.status === 'pending' && (
+                      <button 
+                        onClick={() => handleReviewAction(review.id, 'approve')}
+                        className="flex items-center gap-2 bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground px-4 py-2 rounded transition-colors text-xs font-bold uppercase tracking-widest"
+                      >
+                        <CheckCircle className="w-4 h-4" /> Approve
+                      </button>
+                    )}
+                    <button 
+                      onClick={() => handleReviewAction(review.id, 'delete')}
+                      className="flex items-center gap-2 bg-red-500/10 text-red-500 hover:bg-red-500 hover:text-white px-4 py-2 rounded transition-colors text-xs font-bold uppercase tracking-widest"
+                    >
+                      <Trash2 className="w-4 h-4" /> Delete
+                    </button>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         )}

@@ -1,13 +1,16 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
+import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
+import { Eye, X } from "lucide-react";
 import type { PortfolioImage } from "@/lib/db";
 
 export function FeaturedWork() {
   const [activeCategory, setActiveCategory] = useState("All");
   const [portfolioItems, setPortfolioItems] = useState<PortfolioImage[]>([]);
   const [loading, setLoading] = useState(true);
+  const [selectedImage, setSelectedImage] = useState<PortfolioImage | null>(null);
 
   useEffect(() => {
     const fetchPortfolio = async () => {
@@ -97,6 +100,7 @@ export function FeaturedWork() {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.4, delay: index * 0.1 }}
                 className="group relative aspect-[4/5] overflow-hidden cursor-pointer bg-background"
+                onClick={() => setSelectedImage(item)}
               >
                 {/* Image */}
                 <div 
@@ -121,6 +125,44 @@ export function FeaturedWork() {
         )}
 
       </div>
+
+      {/* Full-Screen Lightbox */}
+      <AnimatePresence>
+        {selectedImage && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[150] flex items-center justify-center bg-black/95 backdrop-blur-md"
+          >
+            <button 
+              onClick={() => setSelectedImage(null)}
+              className="absolute top-6 right-6 w-14 h-14 bg-white/5 hover:bg-white/10 rounded-full flex items-center justify-center text-white/70 hover:text-white transition-all z-10"
+            >
+              <X className="w-6 h-6" />
+            </button>
+            
+            <motion.div 
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              className="relative w-full max-w-5xl aspect-[3/4] md:aspect-[16/9]"
+            >
+              <Image
+                src={selectedImage.url}
+                alt={selectedImage.title}
+                fill
+                className="object-contain"
+              />
+              <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-8 md:p-12">
+                <span className="text-primary text-[10px] md:text-xs tracking-[0.3em] uppercase font-bold mb-2 block">{selectedImage.category}</span>
+                <h3 className="text-white text-2xl md:text-4xl font-heading">{selectedImage.title}</h3>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

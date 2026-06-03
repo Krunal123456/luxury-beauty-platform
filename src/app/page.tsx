@@ -10,7 +10,7 @@ import { LookFinderQuiz } from "@/components/LookFinderQuiz";
 import { CinematicGallery } from "@/components/CinematicGallery";
 import { FeaturedWork } from "@/components/FeaturedWork";
 import { Academy } from "@/components/Academy";
-import { Testimonials } from "@/components/Testimonials";
+import { AdvancedReviews } from "@/components/AdvancedReviews";
 import { BookingCalendar } from "@/components/BookingCalendar";
 import { InstagramFeed } from "@/components/InstagramFeed";
 import { FAQ } from "@/components/FAQ";
@@ -32,7 +32,7 @@ export default function Home() {
       <CinematicGallery />
       <FeaturedWork />
       <Academy />
-      <Testimonials />
+      <AdvancedReviews />
       <BookingCalendar />
       <InstagramFeed />
       <FAQ />
