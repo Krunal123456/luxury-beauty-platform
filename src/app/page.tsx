@@ -3,6 +3,7 @@ import { Hero } from "@/components/Hero";
 import { PressBanner } from "@/components/PressBanner";
 import { AnimatedCounters } from "@/components/AnimatedCounters";
 import { MagicMirrorReveal } from "@/components/MagicMirrorReveal";
+import { BeforeAfterSlider } from "@/components/BeforeAfterSlider";
 import { Services } from "@/components/Services";
 import { Packages } from "@/components/Packages";
 import { LeadMagnet } from "@/components/LeadMagnet";
@@ -25,6 +26,7 @@ export default function Home() {
       <PressBanner />
       <AnimatedCounters />
       <MagicMirrorReveal />
+      <BeforeAfterSlider />
       <Services />
       <Packages />
       <LeadMagnet />
