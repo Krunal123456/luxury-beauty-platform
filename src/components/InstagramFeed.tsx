@@ -5,12 +5,12 @@ import { Camera, Heart, MessageCircle } from "lucide-react";
 
 export function InstagramFeed() {
   const posts = [
-    { id: 1, img: "/portfolio-1.png", likes: "1.2k", comments: "48" },
-    { id: 2, img: "/portfolio-2.png", likes: "892", comments: "34" },
-    { id: 3, img: "/portfolio-3.png", likes: "2.4k", comments: "102" },
-    { id: 4, img: "/portfolio-4.png", likes: "1.5k", comments: "67" },
-    { id: 5, img: "/portfolio-5.png", likes: "3.1k", comments: "156" },
-    { id: 6, img: "/portfolio-6.png", likes: "954", comments: "42" },
+    { id: 1, img: "/portfolio-1.png", likes: "1.2k", comments: "48", url: "https://www.instagram.com/purva_makeover10/" },
+    { id: 2, img: "/portfolio-2.png", likes: "892", comments: "34", url: "https://www.instagram.com/purva_makeover10/" },
+    { id: 3, img: "/portfolio-3.png", likes: "2.4k", comments: "102", url: "https://www.instagram.com/purva_makeover10/" },
+    { id: 4, img: "/portfolio-4.png", likes: "1.5k", comments: "67", url: "https://www.instagram.com/purva_makeover10/" },
+    { id: 5, img: "/portfolio-5.png", likes: "3.1k", comments: "156", url: "https://www.instagram.com/purva_makeover10/" },
+    { id: 6, img: "/portfolio-6.png", likes: "954", comments: "42", url: "https://www.instagram.com/purva_makeover10/" },
   ];
 
   return (
@@ -38,7 +38,7 @@ export function InstagramFeed() {
         <div className="grid grid-cols-2 md:grid-cols-3 gap-1 md:gap-4 max-w-6xl mx-auto">
           {posts.map((post, i) => (
             <motion.a
-              href="#" 
+              href={post.url} 
               target="_blank"
               rel="noopener noreferrer"
               key={post.id}
