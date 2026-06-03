@@ -5,6 +5,7 @@ import { SmoothScroll } from "@/components/SmoothScroll";
 import { CustomCursor } from "@/components/CustomCursor";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { AIConcierge } from "@/components/AIConcierge";
+import { FloatingContact } from "@/components/FloatingContact";
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
@@ -47,6 +48,7 @@ export default function RootLayout({
           <CustomCursor />
           <WhatsAppButton />
           <AIConcierge />
+          <FloatingContact />
           {children}
         </SmoothScroll>
       </body>
