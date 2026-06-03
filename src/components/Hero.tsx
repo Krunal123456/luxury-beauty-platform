@@ -1,69 +1,62 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
-
-import Link from "next/link";
+import { useLanguage } from "@/context/LanguageContext";
 
 export function Hero() {
+  const { t } = useLanguage();
+
   return (
-    <section className="relative h-screen w-full overflow-hidden flex items-center justify-center">
-      {/* Video Background */}
-      <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-background/40 z-10" />
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          poster="/hero-poster.png"
-          className="w-full h-full object-cover"
-        >
-          <source src="https://cdn.pixabay.com/video/2021/08/10/84478-587265910_large.mp4" type="video/mp4" />
-        </video>
-      </div>
+    <section className="relative h-screen flex items-center justify-center overflow-hidden" id="hero">
+      {/* Background Image with Parallax effect */}
+      <motion.div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-fixed"
+        style={{ backgroundImage: 'url("/bridal.png")' }}
+        initial={{ scale: 1.1 }}
+        animate={{ scale: 1 }}
+        transition={{ duration: 10, ease: "easeOut" }}
+      />
+      
+      {/* Luxury Gradient Overlays */}
+      <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/40 to-background/90" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent via-background/20 to-background/80" />
 
       {/* Content */}
-      <div className="relative z-20 container px-4 mx-auto flex flex-col items-center text-center">
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.5 }}
-          className="text-primary tracking-[0.2em] text-sm md:text-base uppercase mb-6 font-semibold"
-        >
-          For moments that deserve to be remembered forever
-        </motion.p>
-
-        <motion.h1
+      <div className="container relative z-10 mx-auto px-4 text-center mt-20">
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.8 }}
-          className="font-heading text-4xl md:text-6xl lg:text-7xl xl:text-8xl text-foreground font-medium tracking-tight mb-8 max-w-5xl leading-tight"
+          transition={{ duration: 1, delay: 0.2 }}
         >
-          Luxury Bridal, Fashion and Celebrity Makeup Experiences
-        </motion.h1>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 1.1 }}
-          className="flex flex-col sm:flex-row gap-4 items-center mt-8"
-        >
-          <Link href="/book">
-            <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 h-14 px-8 rounded-none text-lg tracking-wider group transition-all duration-300">
-              Book Consultation
-              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </Button>
-          </Link>
-          <Link href="/stories">
-            <Button size="lg" variant="outline" className="border-border text-foreground hover:bg-white/5 hover:text-foreground h-14 px-8 rounded-none text-lg tracking-wider backdrop-blur-sm">
-              Explore Transformations
-            </Button>
-          </Link>
+          <p className="text-primary tracking-[0.3em] uppercase text-xs md:text-sm font-semibold mb-6">
+            {t.heroTagline}
+          </p>
+          <h1 className="font-heading text-5xl md:text-7xl lg:text-8xl mb-6 text-foreground drop-shadow-2xl">
+            {t.heroTitlePrefix} <span className="italic text-primary">{t.heroTitleHighlight}</span>
+          </h1>
+          <p className="text-muted-foreground max-w-2xl mx-auto text-lg md:text-xl leading-relaxed mb-10">
+            {t.heroDescription}
+          </p>
+          
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+            <a 
+              href="https://wa.me/918857075984" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="bg-primary text-primary-foreground px-8 py-4 text-sm font-semibold tracking-[0.2em] uppercase hover:bg-primary/90 transition-colors w-full sm:w-auto shadow-[0_0_30px_rgba(212,175,55,0.3)] hover:shadow-[0_0_40px_rgba(212,175,55,0.5)]"
+            >
+              {t.heroBtnPrimary}
+            </a>
+            <a 
+              href="/portfolio" 
+              className="border border-border text-foreground px-8 py-4 text-sm font-semibold tracking-[0.2em] uppercase hover:border-primary hover:text-primary transition-all duration-300 w-full sm:w-auto bg-background/50 backdrop-blur-sm"
+            >
+              {t.heroBtnSecondary}
+            </a>
+          </div>
         </motion.div>
       </div>
-      
+
       {/* Scroll indicator */}
       <motion.div 
         initial={{ opacity: 0 }}

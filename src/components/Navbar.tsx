@@ -5,6 +5,7 @@ import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "framer-
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { LanguageToggle } from "@/components/LanguageToggle";
 
 export function Navbar() {
   const { scrollY } = useScroll();
@@ -51,6 +52,7 @@ export function Navbar() {
           </nav>
 
           <div className="flex items-center gap-4">
+            <LanguageToggle />
             <Link href="/book">
               <Button variant="outline" className="hidden md:flex border-border bg-transparent hover:bg-white/5 hover:text-foreground rounded-none tracking-widest uppercase text-xs h-10">
                 Book Now

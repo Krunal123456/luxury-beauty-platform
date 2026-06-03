@@ -1,36 +1,41 @@
-import type { Metadata, Viewport } from "next";
-import { Playfair_Display, Outfit, Great_Vibes } from "next/font/google";
+import type { Metadata } from "next";
+import { Playfair_Display, Lato, Montserrat, Cinzel } from "next/font/google";
 import "./globals.css";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { CustomCursor } from "@/components/CustomCursor";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { AIConcierge } from "@/components/AIConcierge";
 import { FloatingContact } from "@/components/FloatingContact";
+import { LanguageProvider } from "@/context/LanguageContext";
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
   subsets: ["latin"],
+  display: "swap",
 });
 
-const outfit = Outfit({
-  variable: "--font-outfit",
+const lato = Lato({
+  weight: ["300", "400", "700"],
+  variable: "--font-lato",
   subsets: ["latin"],
+  display: "swap",
 });
 
-const greatVibes = Great_Vibes({
-  weight: "400",
-  variable: "--font-signature",
+const montserrat = Montserrat({
+  variable: "--font-montserrat",
   subsets: ["latin"],
+  display: "swap",
+});
+
+const cinzel = Cinzel({
+  variable: "--font-cinzel",
+  subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "MakeMyMakeup | Premium Beauty Experience",
-  description: "Category-defining digital experience combining luxury aesthetics and bespoke beauty services.",
-  manifest: "/manifest.json",
-};
-
-export const viewport: Viewport = {
-  themeColor: "#1c1917",
+  title: "Make My Makeup | Luxury Bridal & Celebrity Artistry",
+  description: "Experience the pinnacle of beauty with our luxury bridal, celebrity, and editorial makeup services. Book your exclusive consultation today.",
 };
 
 export default function RootLayout({
@@ -39,18 +44,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${playfair.variable} ${outfit.variable} ${greatVibes.variable} h-full antialiased dark`}
-    >
-      <body className="min-h-full flex flex-col font-sans bg-background text-foreground">
-        <SmoothScroll>
-          <CustomCursor />
-          <WhatsAppButton />
-          <AIConcierge />
-          <FloatingContact />
-          {children}
-        </SmoothScroll>
+    <html lang="en" className="dark">
+      <body className={`${playfair.variable} ${lato.variable} ${montserrat.variable} ${cinzel.variable} font-sans antialiased`}>
+        <LanguageProvider>
+          <SmoothScroll>
+            <CustomCursor />
+            <WhatsAppButton />
+            <AIConcierge />
+            <FloatingContact />
+            {children}
+          </SmoothScroll>
+        </LanguageProvider>
       </body>
     </html>
   );
