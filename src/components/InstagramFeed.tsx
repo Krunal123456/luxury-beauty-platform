@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Instagram, Heart, MessageCircle } from "lucide-react";
+import { Camera, Heart, MessageCircle } from "lucide-react";
 
 export function InstagramFeed() {
   const posts = [
@@ -19,7 +19,7 @@ export function InstagramFeed() {
         <div className="flex flex-col md:flex-row justify-between items-center mb-12 gap-6">
           <div className="text-center md:text-left">
             <h2 className="font-heading text-3xl md:text-4xl mb-2 text-foreground flex items-center justify-center md:justify-start gap-3">
-              <Instagram className="w-8 h-8 text-primary" />
+              <Camera className="w-8 h-8 text-primary" />
               <span>@makeover__by__ravina</span>
             </h2>
             <p className="text-muted-foreground">Follow us for daily bridal inspiration & transformations</p>
